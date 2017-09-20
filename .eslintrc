@@ -1,0 +1,10 @@
+{
+  "extends": "airbnb-base",
+  "plugins": [
+    "html",
+  ],
+  "rules": {
+    "no-console": "off",
+    "no-param-reassign": "off",
+  },
+}

@@ -1,0 +1,54 @@
+{
+  "name": "vue-phone-input",
+  "version": "1.0.0",
+  "description": "React component for entering and validating international telephone numbers",
+  "main": "lib/index.js",
+  "scripts": {
+    "build:d": "cross-env NODE_ENV=development webpack",
+    "build:p": "cross-env NODE_ENV=production webpack -p"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MitrophD/vue-phone-input.git"
+  },
+  "keywords": [
+    "vue",
+    "npm",
+    "tel",
+    "phone",
+    "input",
+    "i18n",
+    "intl",
+    "mitropd",
+    "js"
+  ],
+  "author": "Dmitriy Mitrophanskiy <dmitrophanskiy@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MitrophD/vue-phone-input/issues"
+  },
+  "homepage": "https://github.com/MitrophD/vue-phone-input#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "cross-env": "^5.0.5",
+    "css-loader": "^0.28.7",
+    "eslint": "^4.7.0",
+    "eslint-config-airbnb-base": "^12.0.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-html": "^3.2.2",
+    "eslint-plugin-import": "^2.7.0",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^0.11.2",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.5",
+    "vue": "^2.4.4",
+    "vue-loader": "^13.0.4",
+    "vue-template-compiler": "^2.4.4",
+    "webpack": "^3.6.0"
+  },
+  "peerDependencies": {
+    "vue": "^2.4.4"
+  }
+}
