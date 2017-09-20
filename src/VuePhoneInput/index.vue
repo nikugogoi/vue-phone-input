@@ -1,5 +1,5 @@
 <template>
-  <div class="intl-tel-input allow-dropdown" v-on:mouseleave="hideList">
+  <div class="intl-phone-input allow-dropdown" v-on:mouseleave="hideList">
     <div class="flag-container" v-on:click.stop="showList">
       <div class="selected-flag">
         <div v-bind:class="`iti-flag ${phoneCode}`"></div>
