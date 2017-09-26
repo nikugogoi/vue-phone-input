@@ -7,6 +7,7 @@ const appPath = Path.resolve(__dirname, 'src');
 const buildPath = Path.resolve(__dirname, 'lib');
 const nodeModulesPath = Path.resolve(__dirname, 'node_modules');
 const NODE_ENV = process.env.NODE_ENV || 'development';
+const ASSET_PATH = process.env.ASSET_PATH || './';
 
 const webpackConfig = {
   context: appPath,
@@ -54,14 +55,10 @@ const webpackConfig = {
     ],
   },
   resolve: {
-    extensions:
-      [
-        '.js',
-        '.vue'
-      ],
-    /*alias: {
-      'vue$': 'vue/dist/vue.min.js'
-    },*/
+    extensions:[
+      '.js',
+      '.vue'
+    ],
   },
   watch: true,
   watchOptions: {
@@ -82,6 +79,7 @@ const webpackConfig = {
   externals: {},
   output: {
     path: buildPath,
+    publicPath: ASSET_PATH,
     filename: 'index.js',
     libraryTarget: 'umd',
     library: 'VuePhoneInput',
