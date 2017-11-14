@@ -38,11 +38,11 @@
       </ul>
     </div>
     <input type="text"
-      v-bind:name="name"
       autocomplete="off"
+      v-bind:name="name"
       v-on:input="handleChangePhoneNumber"
       v-bind:value="phoneNumber"
-      v-bind::placeholder="intlData.example"
+      v-bind:placeholder="intlData.example"
     />
   </div>
 </template>
