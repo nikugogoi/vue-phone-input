@@ -1,9 +1,4 @@
-/* eslint-disable */
-
-import VuePhoneInput from './VuePhoneInput';
-
-/* eslint-enable */
-
+import VuePhoneInput from './VuePhoneInput/index.vue';
 import './style.less';
 
 export default VuePhoneInput;

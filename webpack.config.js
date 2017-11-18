@@ -18,21 +18,21 @@ const webpackConfig = {
         test: /\.(vue|js)$/,
         enforce: 'pre',
         loader: 'eslint',
-        include: appPath,
       },
       {
         test: /\.js$/,
         loader: 'babel',
-        include: appPath,
       },
       {
         test: /\.vue$/,
         loader: 'vue',
-        include: appPath,
+      },
+      {
+        test: /\.css$/,
+        loader: 'css',
       },
       {
         test: /\.less$/,
-        include: appPath,
         use: ExtractTextWebpackPlugin.extract({
           use: [
             'css',
@@ -57,7 +57,7 @@ const webpackConfig = {
   resolve: {
     extensions:[
       '.js',
-      '.vue'
+      '.vue',
     ],
   },
   watch: true,

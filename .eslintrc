@@ -2,9 +2,18 @@
   "extends": "airbnb-base",
   "plugins": [
     "html",
+    "import",
+    "vue",
   ],
   "rules": {
     "no-console": "off",
     "no-param-reassign": "off",
   },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"]
+      }
+    }
+  }
 }
