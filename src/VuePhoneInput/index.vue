@@ -444,6 +444,7 @@
 
       setCode(code) {
         this.countryCode = code;
+        this.phoneNumber = '';
         this.hideList();
       },
 
