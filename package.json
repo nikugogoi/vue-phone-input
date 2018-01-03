@@ -58,5 +58,8 @@
   },
   "peerDependencies": {
     "vue": "^2.4.4"
+  },
+  "dependencies": {
+    "libphonenumber-js": "^0.4.48"
   }
 }

@@ -37,8 +37,11 @@
         </li>
       </ul>
     </div>
-    <input type="text"
-      autocomplete="off"
+    <input type="tel"
+      autocomplete="off" 
+      class="input"
+      :class="[error ? errorClass : '']"
+      @focus="$emit('focus')"
       v-bind:name="name"
       v-on:input="handleChangePhoneNumber"
       v-bind:value="phoneNumber"
@@ -49,6 +52,8 @@
 
 <script>
   /* eslint-disable no-unused-vars */
+  /* eslint-disable camelcase */
+  import { is_valid_number, format } from 'libphonenumber-js';
 
   const has = Object.hasOwnProperty;
   const isObject = maybeObj => Object.prototype.toString.call(maybeObj) === '[object Object]';
@@ -304,7 +309,6 @@
     ax: { code: 'ax', name: 'Åland Islands', dialCode: 358, example: '041 2345678' },
   };
 
-  /* eslint-enable object-curly-newline, no-unused-vars */
 
   let counter = 0;
 
@@ -346,10 +350,23 @@
         type: Function,
         default: null,
       },
+      error: {
+        type: Boolean,
+        default: false,
+      },
+      errorClass: {
+        type: String,
+        default: null,
+      },
+      dialCode: {
+        type: Number,
+        default: -1,
+      },
     },
 
     data() {
-      const { code, availableOnly, value } = this;
+      const { code, availableOnly, value, dialCode } = this;
+      /* eslint-enable object-curly-newline, no-unused-vars */
       let tmpPhonesData = Object.assign({}, phonesData);
 
       if (isArray(availableOnly)) {
@@ -362,8 +379,16 @@
       }
 
       this.availableData = tmpPhonesData;
-      const needCode = has.call(this.availableData, code) ? code : Object.keys(this.availableData)[0];
-
+      let needCode = has.call(this.availableData, code) ? code : Object.keys(this.availableData)[0];
+      if (dialCode > 0) {
+        /* eslint-disable no-restricted-syntax */
+        for (const key in this.availableData) {
+          if (this.availableData[key].dialCode === dialCode) {
+            needCode = key;
+          }
+        }
+      }
+      /* eslint-enable no-restricted-syntax */
       if (!needCode) {
         throw new Error('Available data is empty.Please set correct "availableOnly" attribute [vue-phone-input]');
       }
@@ -372,6 +397,8 @@
         phoneNumber: value,
         countryCode: needCode,
         isVisiblePanel: false,
+        valid: false,
+        // formatter: new asYouType()
       };
     },
 
@@ -407,8 +434,9 @@
 
     methods: {
       handleChangePhoneNumber(event) {
-        this.phoneNumber = event.target.value;
-
+        // this.phoneNumber = new asYouType(this.countryCode.toUpperCase()).input(event.target.value);
+        this.phoneNumber = format({ country: this.countryCode.toUpperCase(), phone: event.target.value }, 'National');
+        this.valid = is_valid_number(this.phoneNumber, this.countryCode.toUpperCase());
         if (isFunction(this.onChange)) {
           this.onChange(this);
         }
@@ -433,6 +461,8 @@
     },
 
     mounted() {
+      this.valid = is_valid_number(this.phoneNumber, this.countryCode.toUpperCase());
+      /* eslint-enable camelcase */
       if (isFunction(this.onInit)) {
         this.onInit(this);
       }
