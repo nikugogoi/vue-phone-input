@@ -53,7 +53,7 @@
 <script>
   /* eslint-disable no-unused-vars */
   /* eslint-disable camelcase */
-  import { is_valid_number, format } from 'libphonenumber-js';
+  import { isValidNumber, format } from 'libphonenumber-js';
 
   const has = Object.hasOwnProperty;
   const isObject = maybeObj => Object.prototype.toString.call(maybeObj) === '[object Object]';
